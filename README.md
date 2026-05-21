@@ -152,13 +152,33 @@ En el punto de entrada principal del programa (`__name__ == '__main__'`), coordi
 
 ---
 
-## 6. Resultados
-
+6. Resultados
 Al ejecutar el script de manera integral dentro de un entorno local de Python, se validaron satisfactoriamente los siguientes hitos operativos en el ecosistema:
-* **Establecimiento de Conexión Física:** El script de Python detecta de forma correcta el descriptor del puerto serial `COM8`, logrando superar de manera transparente la rutina de autoreinicio del hardware sin generar excepciones de bloqueo de buffer.
-* **Despliegue Multi-hilo Automático:** La terminal del sistema operativo inicializa los procesos paralelos de fondo. El navegador web predeterminado se despliega de forma autónoma abriendo de inmediato el cuadro de control interactivo sin requerir interacción manual del usuario en la barra de direcciones.
-* **Sincronización Asíncrona de Datos:** El dashboard web actualiza los contenedores visuales de Temperatura, Humedad e Iluminación segundo a segundo. Las tramas estructuradas provenientes del hardware se dividen y limpian con precisión, manteniéndose estables y reflejando las variaciones ambientales del entorno en tiempo real.
-* **Conmutación Bidireccional:** Al presionar el botón interactivo de la página, los estilos e indicadores CSS cambian de verde a rojo según corresponda, mientras que a nivel físico el actuador conectado responde instantáneamente a las tramas transmitidas por el puerto serie.
+•	Establecimiento de Conexión Física: El script de Python detecta de forma correcta el descriptor del puerto serial COM8, logrando superar de manera transparente la rutina de autoreinicio del hardware sin generar excepciones de bloqueo de buffer.
+ 
+"Como evidencia del establecimiento de la conexión física, presento la captura de mi terminal de ejecución. En ella demuestro cómo mi script de Python establece la comunicación serial de manera exitosa. La consola imprime continuamente la cadena Datos recibidos del Arduino:, seguida de la trama de datos ya estructurada y limpia en formato de diccionario (mostrando las claves 'temp', 'hum' y 'luz'). Esto comprueba que superé la rutina de reinicio del hardware y que el flujo de lectura es constante, libre de excepciones o bloqueos en el buffer del puerto."
+
+
+
+•	Despliegue Multi-hilo Automático: La terminal del sistema operativo inicializa los procesos paralelos de fondo. El navegador web predeterminado se despliega de forma autónoma abriendo de inmediato el cuadro de control interactivo sin requerir interacción manual del usuario en la barra de direcciones.
+ 
+"Para comprobar el despliegue multi-hilo, adjunto la captura de los registros de red y procesamiento de mi aplicación. En esta evidencia se puede observar claramente la concurrencia de mi sistema: por un lado, el proceso en segundo plano registra la recepción de las tramas físicas (Datos actualizados...), y de forma estrictamente paralela, el servidor web procesa de manera ininterrumpida las peticiones asíncronas (GET /api/datos HTTP/1.1" 200) que el navegador realiza autónomamente para mantener la interfaz viva, validando así la correcta inicialización y convivencia de los procesos."
+
+
+•	Sincronización Asíncrona de Datos: El dashboard web actualiza los contenedores visuales de Temperatura, Humedad e Iluminación segundo a segundo. Las tramas estructuradas provenientes del hardware se dividen y limpian con precisión, manteniéndose estables y reflejando las variaciones ambientales del entorno en tiempo real.
+ 
+
+"La validación visual de la sincronización de datos la sustento con la captura de mi Telemetry Dashboard. Desarrollé esta vista para que actúe como el punto de consumo de mi API. Como se observa en la interfaz, los contenedores gráficos renderizan con precisión los parámetros extraídos del hardware en tiempo real (mostrando valores como 30.10 °C de temperatura, 42.00% de humedad y 366 de iluminación). Esta limpieza y asignación en el frontend demuestra que el parseo de las tramas ocurre de forma exacta entre el microcontrolador, el backend en Python y la vista en el navegador."
+
+
+
+•	Conmutación Bidireccional: Al presionar el botón interactivo de la página, los estilos e indicadores CSS cambian de verde a rojo según corresponda, mientras que a nivel físico el actuador conectado responde instantáneamente a las tramas transmitidas por el puerto serie.
+ 
+
+ 
+
+"Finalmente, para validar el control de actuadores y la comunicación bidireccional (del software hacia el hardware), presento el estado físico de mi circuito. En la primera fotografía evidencio el estado de reposo del sistema. En la segunda fotografía demuestro la conmutación exitosa: al presionar el botón interactivo desde mi entorno web, el estado del botón cambia a nivel de CSS y mi backend transmite la instrucción correspondiente por el puerto serial. El microcontrolador interpreta la trama de manera instantánea, resultando en el encendido físico del LED amarillo sin latencia, cerrando así el ciclo de control remoto de mi ecosistema."
+
 
 ---
 
